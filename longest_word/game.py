@@ -3,6 +3,7 @@
 
 from random import choice
 from string import ascii_uppercase
+import requests
 
 class Game:
     def __init__(self) -> list:
@@ -20,4 +21,10 @@ class Game:
             if letter not in grid_letters:
                 return False
             grid_letters.remove(letter)
-        return True
+        return self.__check_dictionary(word)
+
+    @staticmethod
+    def __check_dictionary(word):
+        response = requests.get(f"https://wagon-dictionary.herokuapp.com/{word}")
+        json_response = response.json()
+        return json_response['found']
