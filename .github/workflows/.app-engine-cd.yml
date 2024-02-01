@@ -16,10 +16,10 @@ jobs:
     # Authenticate via Service Account Key JSON
     # See https://github.com/google-github-actions/auth#authenticating-via-service-account-key-json-1
     - id: 'auth'
-      uses: 'google-github-actions/auth@v1'
+      uses: 'google-github-actions/auth@v2'
       with:
         credentials_json: '${{ secrets.GCP_SA_KEY }}'
 
     # Use Google official GHA to deploy 🎉
     - id: 'deploy'
-      uses: 'google-github-actions/deploy-appengine@v1'
+      uses: 'google-github-actions/deploy-appengine@v2'
